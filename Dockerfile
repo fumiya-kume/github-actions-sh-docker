@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/runtime-deps:6.0-focal
+FROM ubuntu
 
 # Install necessary dependencies, including jq for JSON parsing
 RUN apt-get update && apt-get install -y \
@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     git \
     sudo \
     jq \
+    libicu \
     && rm -rf /var/lib/apt/lists/*
 
 # Create the runner directory and add a non-root runner user
