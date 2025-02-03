@@ -29,4 +29,4 @@ RUN chmod +x entrypoint.sh
 USER runner
 
 # Set the entrypoint script
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
