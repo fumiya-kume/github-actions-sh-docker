@@ -1,14 +1,15 @@
 FROM ubuntu:20.04
 
-# Install necessary dependencies
+# Install necessary dependencies, including jq for JSON parsing
 RUN apt-get update && apt-get install -y \
     curl \
     tar \
     git \
     sudo \
+    jq \
     && rm -rf /var/lib/apt/lists/*
 
-# Create runner directory and add non-root runner user
+# Create the runner directory and add a non-root runner user
 RUN mkdir /actions-runner && groupadd -r runner && useradd -r -g runner runner
 WORKDIR /actions-runner
 
@@ -21,12 +22,12 @@ RUN curl -o actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz -L \
     && tar xzf actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && rm actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
 
-# Copy the entrypoint script and ensure it is executable
+# Copy the entrypoint script (which now displays a help message for invalid arguments) and mark it as executable
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
 
 # Switch to the non-root runner user
 USER runner
 
-# Set the entrypoint script
+# Set the entrypoint using a relative path since WORKDIR is already set
 ENTRYPOINT ["./entrypoint.sh"]
