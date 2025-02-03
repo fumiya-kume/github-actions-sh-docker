@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     git \
     sudo \
     jq \
-    libicu \
+    libicu-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Create the runner directory and add a non-root runner user
