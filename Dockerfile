@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM mcr.microsoft.com/dotnet/runtime-deps:6.0-focal
 
 # Install necessary dependencies, including jq for JSON parsing
 RUN apt-get update && apt-get install -y \
