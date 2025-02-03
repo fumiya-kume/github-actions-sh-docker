@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     git \
     sudo \
     jq \
+    docker \
     libicu-dev \
     && rm -rf /var/lib/apt/lists/*
 
