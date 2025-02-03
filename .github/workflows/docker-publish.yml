@@ -29,7 +29,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./docker/actions-runner
           file: Dockerfile
           push: ${{ github.event_name == 'push' }}
           tags: ghcr.io/${{ github.repository }}/github-actions-runner:latest
