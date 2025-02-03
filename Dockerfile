@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Create the runner directory and add a non-root runner user
-RUN mkdir /actions-runner && groupadd -r runner && useradd -r -g runner runner
-WORKDIR /actions-runner
+RUN mkdir /home/runner && groupadd -r runner && useradd -r -g runner runner
+WORKDIR /home/runner
 
 # Set runner version (can be overridden with --build-arg)
 ARG RUNNER_VERSION=2.300.0
